@@ -21,6 +21,10 @@ export class ionBookingApp {
 
   appMenuItems: Array<MenuItem>;
 
+  tab1Root = 'page-menu-vet';
+  tab2Root = 'page-menu-vet';
+  tab3Root = 'page-menu-vet';
+
   constructor(
     public platform: Platform
   ) {
@@ -28,13 +32,15 @@ export class ionBookingApp {
 
     this.appMenuItems = [
       {title: 'Home', component: 'page-home', icon: 'home'},
-      {title: 'Atualizar Perfil', component: 'page-edit-profile', icon: 'person'},
+      {title: 'Atualizar Perfil', component: 'page-menu-vet', icon: 'person'},
       {title: 'Consultar Agenda', component: 'page-search-cars', icon: 'list-box'},
       {title: 'Atendimentos Realizados', component: 'page-search-trips', icon: 'checkmark-circle'},
       {title: 'Pagamentos', component: 'page-search-cars', icon: 'cash'},
-      {title: 'Messages', component: 'page-message-list', icon: 'mail'},
+      {title: 'Mensagens', component: 'page-message-list', icon: 'mail'},
       {title: 'Contato', component: 'page-support', icon: 'help-circle'}
     ];
+
+
   }
 
   initializeApp() {

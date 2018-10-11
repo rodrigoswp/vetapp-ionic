@@ -1,14 +1,14 @@
 webpackJsonp([18],{
 
-/***/ 619:
+/***/ 568:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageDetailPageModule", function() { return MessageDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message_detail__ = __webpack_require__(898);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var MessageDetailPageModule = (function () {
+    function MessageDetailPageModule() {
     }
-    LoginPageModule = __decorate([
+    MessageDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__message_detail__["a" /* MessageDetailPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__message_detail__["a" /* MessageDetailPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__message_detail__["a" /* MessageDetailPage */]
             ]
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], MessageDetailPageModule);
+    return MessageDetailPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=message-detail.module.js.map
 
 /***/ }),
 
-/***/ 676:
+/***/ 898:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_message_service_mock__ = __webpack_require__(472);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,82 +61,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LoginPage = (function () {
-    function LoginPage(_fb, nav, forgotCtrl, menu, toastCtrl) {
-        this._fb = _fb;
-        this.nav = nav;
-        this.forgotCtrl = forgotCtrl;
-        this.menu = menu;
-        this.toastCtrl = toastCtrl;
-        this.menu.swipeEnable(false);
-        this.menu.enable(false);
+var MessageDetailPage = (function () {
+    function MessageDetailPage(navCtrl, navParams, service) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.service = service;
+        this.param = this.navParams.get('id');
+        this.message = this.service.getItem(this.param) ? this.service.getItem(this.param) : this.service.getMessages()[0];
     }
-    LoginPage.prototype.ngOnInit = function () {
-        this.onLoginForm = this._fb.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ])],
-            password: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ])]
-        });
-    };
-    // go to register page
-    LoginPage.prototype.register = function () {
-        this.nav.setRoot('page-register');
-    };
-    // login and go to home page
-    LoginPage.prototype.login = function () {
-        this.nav.setRoot('page-home');
-    };
-    LoginPage.prototype.forgotPass = function () {
-        var _this = this;
-        var forgot = this.forgotCtrl.create({
-            title: 'Forgot Password?',
-            message: "Enter you email address to send a reset link password.",
-            inputs: [
-                {
-                    name: 'email',
-                    placeholder: 'Email',
-                    type: 'email'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'Cancel',
-                    handler: function (data) {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Send',
-                    handler: function (data) {
-                        console.log('Send clicked');
-                        var toast = _this.toastCtrl.create({
-                            message: 'Email was sended successfully',
-                            duration: 3000,
-                            position: 'top',
-                            cssClass: 'dark-trans',
-                            closeButtonText: 'OK',
-                            showCloseButton: true
-                        });
-                        toast.present();
-                    }
-                }
-            ]
-        });
-        forgot.present();
-    };
-    LoginPage = __decorate([
+    MessageDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/login/login.html"*/'<!-- -->\n<ion-content padding class="animated fadeIn login auth-page">\n  <div class="login-content">\n    <div >\n       \n    </div>\n    <!-- Logo -->\n    <div padding-horizontal text-center class="animated fadeInDown">\n      <div class="logo"></div>\n     <!-- <h2 ion-text class="text-white" no-margin>\n        <strong>VET</strong>\n      </h2> -->\n    </div>\n\n    <!-- Login form -->\n    <form [formGroup]="onLoginForm" class="list-form">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-white"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input type="email" formControlName="email"></ion-input>\n      </ion-item>\n      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get(\'email\').touched && onLoginForm.get(\'email\').hasError(\'required\')">This field is required</p>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-white"></ion-icon>\n          Senha\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get(\'password\').touched && onLoginForm.get(\'password\').hasError(\'required\')">This field is required</p>\n    </form>\n\n    <p text-right ion-text color="light" tappable (click)="forgotPass()"><strong>Esqueceu a Senha?</strong></p>\n\n    <div>\n      <button ion-button icon-start block color="secondary" tappable (click)="login()" [disabled]="!onLoginForm.valid">\n        <ion-icon name="log-in"></ion-icon>\n        Login\n      </button>\n\n      <p text-center ion-text color="light">Ou faça login via as opções abaixo:</p>\n\n      <ion-grid class="btn-group">\n        <ion-row>\n          <button ion-button icon-only block class="btn-facebook col col-4">\n            <ion-icon name="logo-facebook"></ion-icon>\n          </button>\n          <button ion-button icon-only block class="btn-twitter col col-4">\n            <ion-icon name="logo-twitter"></ion-icon>\n          </button>\n          <button ion-button icon-only block class="btn-gplus col col-4">\n            <ion-icon name="logo-googleplus"></ion-icon>\n          </button>\n        </ion-row>\n      </ion-grid>\n\n    </div>\n\n\n    <!-- Other links -->\n    <div text-center margin-top>\n      <span ion-text color="light" tappable (click)="register()">Novo aqui? <strong>Cadastra-se</strong></span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/login/login.html"*/
+            selector: 'page-message-detail',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/message-detail/message-detail.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <span ion-text>Message</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<div class="message-header profile-bg" padding>\n					<h5 ion-text class="fw700 text-white">{{message.title}}</h5>\n					<p ion-text no-margin color="light">{{message.date | date: \'MM/dd/yyyy\'}} ∙ by <strong>{{message.senderName}}</strong></p>\n				</div>\n\n				<div padding-horizontal>\n					<p>\n						{{message.message}}\n					</p>\n				</div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/message-detail/message-detail.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["AlertController"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["MenuController"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["ToastController"]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_2__providers_message_service_mock__["a" /* MessageService */]])
+    ], MessageDetailPage);
+    return MessageDetailPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=message-detail.js.map
 
 /***/ })
 

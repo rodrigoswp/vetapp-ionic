@@ -1,14 +1,14 @@
 webpackJsonp([16],{
 
-/***/ 621:
+/***/ 570:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageListPageModule", function() { return MessageListPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__message_list__ = __webpack_require__(678);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(611);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MessageListPageModule = (function () {
-    function MessageListPageModule() {
+var NotificationsPageModule = (function () {
+    function NotificationsPageModule() {
     }
-    MessageListPageModule = __decorate([
+    NotificationsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__message_list__["a" /* MessageListPage */]
+                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__message_list__["a" /* MessageListPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__message_list__["a" /* MessageListPage */]
+                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
             ]
         })
-    ], MessageListPageModule);
-    return MessageListPageModule;
+    ], NotificationsPageModule);
+    return NotificationsPageModule;
 }());
 
-//# sourceMappingURL=message-list.module.js.map
+//# sourceMappingURL=notifications.module.js.map
 
 /***/ }),
 
-/***/ 678:
+/***/ 611:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_message_service_mock__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,35 +59,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var MessageListPage = (function () {
-    function MessageListPage(navCtrl, service) {
+var NotificationsPage = (function () {
+    function NotificationsPage(navCtrl, viewCtrl) {
         this.navCtrl = navCtrl;
-        this.service = service;
-        this.messages = [];
-        this.getMessages();
+        this.viewCtrl = viewCtrl;
     }
-    MessageListPage.prototype.itemTapped = function (message) {
-        this.navCtrl.push('page-message-detail', {
-            'id': message.id
-        });
+    NotificationsPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
     };
-    MessageListPage.prototype.deleteItem = function (message) {
-        this.service.delMessage(message);
+    NotificationsPage.prototype.messages = function () {
+        this.navCtrl.push('page-message-list');
     };
-    MessageListPage.prototype.getMessages = function () {
-        this.messages = this.service.getMessages();
-    };
-    MessageListPage = __decorate([
+    NotificationsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-message-list',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/message-list/message-list.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Messages</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<ion-card *ngIf="!messages.length" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">You have no messages yet.</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-list>\n					<ion-item-sliding *ngFor="let message of messages">\n						<button ion-item (click)="itemTapped(message)" [ngClass]="{\'dark-bg\': !message.read}">\n							<h2 [ngClass]="{\'fw700 text-white\': !message.read}">\n								<ion-icon name="mail" color="light" *ngIf="!message.read"></ion-icon>\n								<ion-icon name="mail-open" color="primary" *ngIf="message.read"></ion-icon>\n								{{message.title}}\n							</h2>\n							<p ion-text color="dark" [ngClass]="{\'text-light\': !message.read}">{{message.senderName}} ∙ {{message.date | date: \'MM/dd/yyyy\'}}</p>\n						</button>\n						<ion-item-options>\n							<button ion-button color="danger" (click)="deleteItem(message)">Delete</button>\n						</ion-item-options>\n					</ion-item-sliding>\n				</ion-list>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/message-list/message-list.html"*/
+            selector: 'page-notifications',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/notifications/notifications.html"*/'<ion-list class="no-margin">\n  <ion-list-header class="no-margin">\n  	<ion-icon name="notifications" color="primary"></ion-icon>\n  	<span ion-text color="primary" class="bold">Notifications</span>\n  </ion-list-header>\n  <button ion-item color="secondary" class="text-1x" tappable (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Trip Offer 25% OFF\n  </button>\n  <button ion-item color="secondary" class="text-1x" tappable (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Offer 15% OFF by month!\n  </button>\n  <button ion-item class="text-1x" tappable (click)="messages()">\n  	<ion-icon name="mail-open" color="secondary"></ion-icon>\n  	<span ion-text color="secondary">Copacabana Hotel Offer!</span>\n  </button>\n  <button ion-item class="text-1x" tappable (click)="messages()">\n  	<ion-icon name="mail-open" color="secondary"></ion-icon>\n  	<span ion-text color="secondary">Big Deal of the Week!</span>\n  </button>\n</ion-list>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/notifications/notifications.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_2__providers_message_service_mock__["a" /* MessageService */]])
-    ], MessageListPage);
-    return MessageListPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ViewController"]])
+    ], NotificationsPage);
+    return NotificationsPage;
 }());
 
-//# sourceMappingURL=message-list.js.map
+//# sourceMappingURL=notifications.js.map
 
 /***/ })
 

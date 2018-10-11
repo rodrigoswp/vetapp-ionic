@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 623:
+/***/ 572:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReviewsPageModule", function() { return ReviewsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(679);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reviews__ = __webpack_require__(901);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+var ReviewsPageModule = (function () {
+    function ReviewsPageModule() {
     }
-    RegisterPageModule = __decorate([
+    ReviewsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]
+                __WEBPACK_IMPORTED_MODULE_2__reviews__["a" /* ReviewsPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__reviews__["a" /* ReviewsPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]
+                __WEBPACK_IMPORTED_MODULE_2__reviews__["a" /* ReviewsPage */]
             ]
         })
-    ], RegisterPageModule);
-    return RegisterPageModule;
+    ], ReviewsPageModule);
+    return ReviewsPageModule;
 }());
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=reviews.module.js.map
 
 /***/ }),
 
-/***/ 679:
+/***/ 901:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_hotel_service__ = __webpack_require__(371);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,45 +61,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RegisterPage = (function () {
-    function RegisterPage(_fb, nav, menu) {
-        this._fb = _fb;
+var ReviewsPage = (function () {
+    function ReviewsPage(nav, hotelService) {
         this.nav = nav;
-        this.menu = menu;
-        this.menu.swipeEnable(false);
-        this.menu.enable(false);
+        this.hotelService = hotelService;
+        // set tabs
+        this.recent = 'tabs-reviews';
+        this.favorable = 'tabs-reviews';
+        this.critical = 'tabs-reviews';
+        // set hotel data
+        this.hotel = hotelService.getItem(1);
     }
-    RegisterPage.prototype.ngOnInit = function () {
-        this.onRegisterForm = this._fb.group({
-            fullName: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ])],
-            email: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ])],
-            password: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ])]
-        });
-    };
-    // register and go to home page
-    RegisterPage.prototype.register = function () {
-        this.nav.setRoot('page-home');
-    };
-    // go to login page
-    RegisterPage.prototype.login = function () {
-        this.nav.setRoot('page-login');
-    };
-    RegisterPage = __decorate([
+    ReviewsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-register',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/register/register.html"*/'<!-- -->\n<ion-content class="auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div padding-horizontal text-center>\n      <div class="logo"></div>\n    <!--  <h2 ion-text class="text-white" no-margin>\n        ion<strong>Booking</strong>\n      </h2> -->\n    </div>\n\n    <!-- Register form -->\n    <form [formGroup]="onRegisterForm" class="list-form">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="person" item-start class="text-white"></ion-icon>\n          Nome Completo\n        </ion-label>\n        <ion-input type="text" formControlName="fullName"></ion-input>\n      </ion-item>\n      <p ion-text color="danger" class="text-1x has-error" *ngIf="onRegisterForm.get(\'fullName\').touched && onRegisterForm.get(\'fullName\').hasError(\'required\')">This field is required</p>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-white"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input type="email" formControlName="email"></ion-input>\n      </ion-item>\n      <p ion-text color="danger" class="text-1x has-error" *ngIf="onRegisterForm.get(\'email\').touched && onRegisterForm.get(\'email\').hasError(\'required\')">This field is required</p>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-white"></ion-icon>\n          Senha\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n\n      <p ion-text color="danger" class="secondary" *ngIf="onRegisterForm.get(\'password\').touched && onRegisterForm.get(\'password\').hasError(\'required\')">This field is required</p>\n\n      <div radio-group margin-top margin-bottom>\n        <ion-item>\n          <ion-label>Tipo usuario:</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-icon name="medkit" item-start class="text-white"></ion-icon>\n            <ion-label>Sou um VET</ion-label>           \n            <ion-radio value="agent"></ion-radio>\n          </ion-item>\n        <ion-item>\n          <ion-icon name="paw" item-start class="text-white"></ion-icon>\n          <ion-label>Tenho um PET</ion-label>           \n          <ion-radio value="agent"></ion-radio>\n        </ion-item>\n      </div>\n      \n      \n    </form>\n\n    <div margin-top>\n      <button ion-button block color="secondary" tappable (click)="register()" [disabled]="!onRegisterForm.valid">\n        CADASTRAR\n      </button>\n\n      <p text-center ion-text color="light">Ou faça login via as opções abaixo:</p>\n\n      <ion-grid class="btn-group">\n        <ion-row>\n          <button ion-button icon-only block class="btn-facebook col col-4">\n            <ion-icon name="logo-facebook"></ion-icon>\n          </button>\n          <button ion-button icon-only block class="btn-twitter col col-4">\n            <ion-icon name="logo-twitter"></ion-icon>\n          </button>\n          <button ion-button icon-only block class="btn-gplus col col-4">\n            <ion-icon name="logo-googleplus"></ion-icon>\n          </button>\n        </ion-row>\n      </ion-grid>  \n    </div>\n\n    <!-- Other links -->\n    <div text-center margin-top>\n      <span ion-text color="light" tappable (click)="login()">Eu já tenho conta</span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/register/register.html"*/
+            selector: 'page-reviews',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/reviews/reviews.html"*/'<!-- -->\n<ion-tabs color="primary" tabsPlacement="top">\n  <ion-tab tabTitle="RECENT" [root]="recent"></ion-tab>\n  <ion-tab tabTitle="FAVORABLE" [root]="favorable"></ion-tab>\n  <ion-tab tabTitle="CRITICAL" [root]="critical"></ion-tab>\n</ion-tabs>`\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/reviews/reviews.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["MenuController"]])
-    ], RegisterPage);
-    return RegisterPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_2__providers_hotel_service__["a" /* HotelService */]])
+    ], ReviewsPage);
+    return ReviewsPage;
 }());
 
-//# sourceMappingURL=register.js.map
+//# sourceMappingURL=reviews.js.map
 
 /***/ })
 

@@ -2,7 +2,7 @@
 <ion-content padding class="animated fadeIn login auth-page">
   <div class="login-content">
     <div >
-       
+
     </div>
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
@@ -21,7 +21,7 @@
         </ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">This field is required</p>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">Este campo é obrigatório</p>
 
       <ion-item>
         <ion-label floating>
@@ -30,7 +30,7 @@
         </ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">This field is required</p>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">Este campo é obrigatório</p>
     </form>
 
     <p text-right ion-text color="light" tappable (click)="forgotPass()"><strong>Esqueceu a Senha?</strong></p>
@@ -40,7 +40,7 @@
         <ion-icon name="log-in"></ion-icon>
         Login
       </button>
-
+      <!--
       <p text-center ion-text color="light">Ou faça login via as opções abaixo:</p>
 
       <ion-grid class="btn-group">
@@ -56,7 +56,7 @@
           </button>
         </ion-row>
       </ion-grid>
-
+    -->
     </div>
 
 

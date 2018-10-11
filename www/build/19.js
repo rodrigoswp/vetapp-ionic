@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 618:
+/***/ 567:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LocalWeatherModule", function() { return LocalWeatherModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuVetPageModule", function() { return MenuVetPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_weather__ = __webpack_require__(675);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menu_vet__ = __webpack_require__(897);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LocalWeatherModule = (function () {
-    function LocalWeatherModule() {
+var MenuVetPageModule = (function () {
+    function MenuVetPageModule() {
     }
-    LocalWeatherModule = __decorate([
+    MenuVetPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__local_weather__["a" /* LocalWeatherPage */]
+                __WEBPACK_IMPORTED_MODULE_2__menu_vet__["a" /* MenuVetPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__local_weather__["a" /* LocalWeatherPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__menu_vet__["a" /* MenuVetPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__local_weather__["a" /* LocalWeatherPage */]
+                __WEBPACK_IMPORTED_MODULE_2__menu_vet__["a" /* MenuVetPage */]
             ]
         })
-    ], LocalWeatherModule);
-    return LocalWeatherModule;
+    ], MenuVetPageModule);
+    return MenuVetPageModule;
 }());
 
-//# sourceMappingURL=local-weather.module.js.map
+//# sourceMappingURL=menu-vet.module.js.map
 
 /***/ }),
 
-/***/ 675:
+/***/ 897:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocalWeatherPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuVetPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_weather__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,60 +59,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-var LocalWeatherPage = (function () {
-    function LocalWeatherPage(navCtrl, weatherProvider, storage) {
-        this.navCtrl = navCtrl;
-        this.weatherProvider = weatherProvider;
-        this.storage = storage;
-        this.locationList = [
-            { city: 'Los Angeles', state: 'CA' },
-            { city: 'Miami', state: 'FL' },
-            { city: 'New York', state: 'NY' },
-            { city: 'Seattle', state: 'WA' },
-            { city: 'São Paulo', state: 'SP' }
-        ];
+var MenuVetPage = (function () {
+    function MenuVetPage(nav) {
+        // set sample data
+        this.nav = nav;
     }
-    LocalWeatherPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        this.storage.get('location').then(function (val) {
-            if (val != null) {
-                _this.location = JSON.parse(val);
-            }
-            else {
-                _this.location = {
-                    state: 'NY',
-                    city: 'New York'
-                };
-            }
-            _this.getWeather(_this.location);
-        });
+    MenuVetPage.prototype.home = function () {
+        this.nav.setRoot('page-home');
     };
-    LocalWeatherPage.prototype.getWeather = function (location) {
-        var _this = this;
-        if (typeof location === 'string') {
-            this.location = JSON.parse(location);
-        }
-        else {
-            this.location = location;
-        }
-        this.weatherProvider.getWeather(this.location.state, this.location.city).subscribe(function (weather) {
-            _this.weather = weather.current_observation;
-        });
+    MenuVetPage.prototype.edit_vet_pessoal = function () {
+        this.nav.setRoot('page-edit-profile');
     };
-    LocalWeatherPage = __decorate([
+    MenuVetPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-local-weather',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/local-weather/local-weather.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Local Weather</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="common-bg">\n  <ion-card class="full-width" no-margin margin-bottom>\n    <ion-card-content no-padding>\n\n      <ion-item>\n        <ion-label class="text-1x bold">Select Local</ion-label>\n        <ion-select [(ngModel)]="location" (ionChange)="getWeather(location)">\n          <ion-option *ngFor="let location of locationList" [value]="location">{{ location.city }}</ion-option>\n        </ion-select>\n      </ion-item>\n\n    </ion-card-content>\n  </ion-card>\n\n  <ion-grid class="card" padding *ngIf="weather">\n    <ion-row>\n        <ion-col width-50 offset-25>\n            <h2 class="location text-dark">{{weather.display_location.full}}</h2>\n            <div class="icon"><img src="{{weather.icon_url}}" alt="weather"></div>\n            <h3 class="desc">{{weather.weather}}</h3>\n            <h1 class="temp">{{weather.temp_c}}&deg;</h1>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col width-100>\n            <ion-list>\n\n                <ion-item>\n                <strong>Temp:</strong> {{weather.temperature_string}}\n                </ion-item>\n                 <ion-item>\n                    <strong>Relative Humidity:</strong> {{weather.relative_humidity}}\n                </ion-item>\n                 <ion-item>\n                    <strong>Dewpoint:</strong> {{weather.dewpoint_string}}\n                </ion-item>\n                 <ion-item>\n                    <strong>Visibility:</strong> {{weather.visibility_km}}\n                </ion-item>\n                <ion-item>\n                    <strong>Heat Index:</strong> {{weather.heat_index_string}}\n                </ion-item>\n\n            </ion-list>\n        </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/local-weather/local-weather.html"*/
+            selector: 'page-menu-vet',template:/*ion-inline-start:"/home/rodrigo/vetapp/src/pages/menu-vet/menu-vet.html"*/'<ion-header>\n\n  <ion-navbar color="secondary">\n    <ion-title class="icon-title">\n      <div ion-text class="text-white"></div>\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="search-cars common-bg">\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col col-12>\n        <!-- choose pickup and drop-off-->\n        <h6 ion-text no-margin color="primary" class="marginB-16px">\n\n              <ion-icon name="arrow-round-back" (click)="home()"> PERFIL</ion-icon>\n\n        </h6>\n\n\n        <p>\n          <button ion-button icon-end block no-margin color="primary" class="round" tappable (click)="edit_vet_pessoal()">\n          Dados Pessoais  <ion-icon name="create"></ion-icon>\n          </button>\n        </p>\n        <p>\n        <button ion-button icon-end block no-margin color="primary" class="round" tappable (click)="doSearch()">\n         Endereço  <ion-icon name="create"></ion-icon>\n        </button>\n        </p>\n        <p>\n        <button ion-button icon-end block no-margin color="primary" class="round" tappable (click)="doSearch()">\n        Info Profissionais  <ion-icon name="create"></ion-icon>\n        </button>\n      </p>\n      <p>\n        <button ion-button icon-end block no-margin color="primary" class="round" tappable (click)="doSearch()">\n          Documentação <ion-icon name="create"></ion-icon>\n        </button>\n      </p>\n      <p>\n        <button ion-button icon-end block no-margin color="primary" class="round"  tappable (click)="doSearch()">\n          Dados Bancários  <ion-icon name="create"></ion-icon>\n        </button>\n      </p>\n      <p>\n        <button ion-button icon-end block no-margin color="primary" class="round" tappable  (click)="doSearch()">\n        Tipos de Atendimento  <ion-icon name="create"></ion-icon>\n        </button>\n      </p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/rodrigo/vetapp/src/pages/menu-vet/menu-vet.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"],
-            __WEBPACK_IMPORTED_MODULE_2__providers_weather__["a" /* WeatherProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], LocalWeatherPage);
-    return LocalWeatherPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"]])
+    ], MenuVetPage);
+    return MenuVetPage;
 }());
 
-//# sourceMappingURL=local-weather.js.map
+//# sourceMappingURL=menu-vet.js.map
 
 /***/ })
 

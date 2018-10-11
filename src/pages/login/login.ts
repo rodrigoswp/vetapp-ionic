@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
 
   // go to register page
   register() {
-    this.nav.setRoot('page-register');
+    this.nav.setRoot('page-sel-user');
   }
 
   // login and go to home page
